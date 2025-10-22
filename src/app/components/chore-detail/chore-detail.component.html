@@ -1,0 +1,31 @@
+<!-- Confetti overlay -->
+@if (confetti().length > 0) {
+<div class="celebration-overlay">
+  @for (particle of confetti(); track particle.id) {
+  <div class="confetti-particle" [class.confetti-square]="particle.isSquare" [style.left.%]="particle.left"
+    [style.top.%]="particle.top" [style.background-color]="particle.color" [style.animation-delay.ms]="particle.delay"
+    [style.--x-offset.px]="particle.xOffset" [style.--rotation.deg]="particle.rotation"></div>
+  }
+
+  <!-- Star burst -->
+  <div class="star-burst">
+    @for (star of [0, 1, 2, 3, 4, 5, 6, 7]; track star) {
+    <div class="star" [style.--star-angle.deg]="star * 45" [style.animation-delay.ms]="star * 100">⭐</div>
+    }
+  </div>
+</div>
+}
+
+@for (chore of choresList().chores; track choresList().id) {
+<div
+  class="mx-auto mb-4 flex max-w-sm items-center gap-x-4 rounded-xl bg-light-urple p-6 shadow-lg outline outline-black/5 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10 relative transition-transform hover:scale-[1.02]">
+
+  <div class="checkbox-wrapper">
+    <input type="checkbox" [checked]="chore.completed" (change)="toggleChore(chore)"
+      [class.checkbox-celebrating]="celebrating()"
+      class="h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 dark:border-gray-700 dark:bg-gray-900 dark:checked:bg-indigo-600 dark:checked:border-indigo-600 dark:ring-offset-gray-900 cursor-pointer transition-transform" />
+  </div>
+  <label class="cursor-pointer select-none transition-all duration-300" [class.line-through]="chore.completed"
+    [class.opacity-50]="chore.completed" (click)="toggleChore(chore)">{{ chore.name }}</label>
+</div>
+}

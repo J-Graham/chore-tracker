@@ -1,8 +1,11 @@
 <div class="flex gap-4 p-4">
-  <button class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+  <a [routerLink]="['/chore-detail/1']"
+    class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
     Hannah
-  </button>
-  <button class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+  </a>
+  <a [routerLink]="['/chore-detail/2']"
+    class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
     Mackenzie
-  </button>
+  </a>
 </div>
+<router-outlet />
